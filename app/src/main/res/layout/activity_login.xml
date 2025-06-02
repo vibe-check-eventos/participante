@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Login">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:foregroundGravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="65dp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="323dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center_horizontal"
+                android:foregroundGravity="center_horizontal">
+
+                <LinearLayout
+                    android:layout_width="318dp"
+                    android:layout_height="100dp"
+                    android:gravity="center|center_horizontal"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="123dp"
+                        android:layout_height="100dp"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/vibecheckicon" />
+
+                    <LinearLayout
+                        android:layout_width="204dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <Space
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
+
+                        <TextView
+                            android:id="@+id/textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="27dp"
+                            android:layout_weight="1"
+                            android:fontFamily="sans-serif-smallcaps"
+                            android:text="Vibe Check"
+                            android:textColor="#2E86C1"
+                            android:textSize="40dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/textView2"
+                            android:layout_width="153dp"
+                            android:layout_height="10dp"
+                            android:layout_weight="1"
+                            android:text="Participante"
+                            android:textAlignment="center"
+                            android:textColor="#26187c"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+
+                        <Space
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="104dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="201dp"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/lnlyNaturalPerson"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <EditText
+                        android:id="@+id/email"
+                        android:layout_width="match_parent"
+                        android:layout_height="43dp"
+                        android:layout_marginBottom="10dp"
+                        android:height="30dp"
+                        android:background="@drawable/input_shape"
+                        android:ems="10"
+                        android:hint="Email"
+                        android:inputType="text"
+                        android:padding="10dp"
+                        android:textColor="@color/white"
+                        android:textColorHint="#58FFFFFF" />
+
+                    <EditText
+                        android:id="@+id/password"
+                        android:layout_width="match_parent"
+                        android:layout_height="43dp"
+                        android:layout_marginBottom="10dp"
+                        android:height="30dp"
+                        android:background="@drawable/input_shape"
+                        android:ems="10"
+                        android:hint="Senha"
+                        android:inputType="text"
+                        android:padding="10dp"
+                        android:textColor="@color/white"
+                        android:textColorHint="#58FFFFFF" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lnlyLegalPerson"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <EditText
+                        android:id="@+id/editCompanyName"
+                        android:layout_width="match_parent"
+                        android:layout_height="43dp"
+                        android:layout_marginBottom="10dp"
+                        android:height="30dp"
+                        android:background="@drawable/input_shape"
+                        android:ems="10"
+                        android:hint="Nome da Empresa"
+                        android:inputType="text"
+                        android:padding="10dp"
+                        android:textColor="@color/white"
+                        android:textColorHint="#58FFFFFF" />
+
+                    <EditText
+                        android:id="@+id/editCompanyDocument"
+                        android:layout_width="match_parent"
+                        android:layout_height="43dp"
+                        android:layout_marginBottom="10dp"
+                        android:height="30dp"
+                        android:background="@drawable/input_shape"
+                        android:ems="10"
+                        android:hint="CNPJ"
+                        android:inputType="text"
+                        android:padding="10dp"
+                        android:textColor="@color/white"
+                        android:textColorHint="#58FFFFFF" />
+
+                    <EditText
+                        android:id="@+id/editCompanyEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="43dp"
+                        android:layout_marginBottom="10dp"
+                        android:height="30dp"
+                        android:background="@drawable/input_shape"
+                        android:ems="10"
+                        android:hint="Email"
+                        android:inputType="text"
+                        android:padding="10dp"
+                        android:textColor="@color/white"
+                        android:textColorHint="#58FFFFFF" />
+
+                    <EditText
+                        android:id="@+id/editCompanyPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="43dp"
+                        android:layout_marginBottom="10dp"
+                        android:height="30dp"
+                        android:background="@drawable/input_shape"
+                        android:ems="10"
+                        android:hint="Senha"
+                        android:inputType="textPassword"
+                        android:padding="10dp"
+                        android:textColor="@color/white"
+                        android:textColorHint="#58FFFFFF" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_shape"
+                    android:onClick="loginEntity"
+                    android:text="Entrar"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/linkToRegister"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:onClick="sendToRegisterForm"
+                    android:text="Não tem conta ? Cadastre-se"
+                    android:textAlignment="center"
+                    android:textColor="#FF10F0"
+                    android:textStyle="bold|italic" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
