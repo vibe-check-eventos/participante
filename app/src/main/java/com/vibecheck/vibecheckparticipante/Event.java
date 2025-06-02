@@ -84,7 +84,6 @@ public class Event extends AppCompatActivity {
 
                     String nome = json.getString("name");
                     String descricao = json.getString("description");
-                    int capacidade = json.getInt("capacity");
                     String data = json.getString("created_at"); // ou outro campo de data, se tiver um mais adequado
 
                     JSONObject endereco = json.getJSONObject("event_address");
@@ -94,7 +93,7 @@ public class Event extends AppCompatActivity {
                         nomeEditText.setText(nome);
                         dataEditText.setText(convertIsoToDdMmYyyyHhSs(data));
                         localEditText.setText(enderecoCompleto);
-                        descricaoEditText.setText(descricao + "\nCapacidade: " + capacidade);
+                        descricaoEditText.setText(descricao);
                     });
 
                 } catch (JSONException e) {
@@ -119,6 +118,8 @@ public class Event extends AppCompatActivity {
         // Pegando o participant_id do SharedPreferences
         SharedPreferences prefs = getSharedPreferences("user_data", MODE_PRIVATE);
         long participantId = prefs.getLong("id", -1);
+
+        Log.d("SUBSCRIPTION", Long.toString(participantId));
 
         if (participantId == -1 || eventId == -1) {
             Toast.makeText(this, "Erro ao obter IDs!", Toast.LENGTH_SHORT).show();

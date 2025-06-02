@@ -3,12 +3,12 @@ package com.vibecheck.vibecheckparticipante.adapters;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.util.Base64; // Importar Base64
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView; // Importar ImageView
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -38,10 +38,11 @@ public class QRCodeAdapter extends ArrayAdapter<QRCodeDisplayItem> {
 
         QRCodeDisplayItem qrCodeItem = getItem(position);
 
-        ImageView eventImageView = convertView.findViewById(R.id.eventImageView); // <--- AQUI!
+        ImageView eventImageView = convertView.findViewById(R.id.eventImageView);
         TextView eventNameTextView = convertView.findViewById(R.id.eventNameTextView);
         TextView eventDateTextView = convertView.findViewById(R.id.eventDateTextView);
         TextView eventLocationTextView = convertView.findViewById(R.id.eventLocationTextView);
+        TextView organizerNameTextView = convertView.findViewById(R.id.organizerNameTextView); // Obter referência ao NOVO TextView
 
         if (qrCodeItem != null) {
             eventNameTextView.setText(qrCodeItem.getEventName());
@@ -63,11 +64,11 @@ public class QRCodeAdapter extends ArrayAdapter<QRCodeDisplayItem> {
             }
 
             eventLocationTextView.setText("Local: " + qrCodeItem.getEventLocation());
+            organizerNameTextView.setText("Organizador: " + qrCodeItem.getOrganizerName()); // Popular o NOVO TextView
 
-            // Carregar a imagem Base64 no ImageView <-- AQUI ESTÁ A LÓGICA DE RENDERIZAÇÃO!
+            // Carregar a imagem Base64 no ImageView
             String base64Image = qrCodeItem.getQrCodeBase64();
             if (base64Image != null && !base64Image.isEmpty()) {
-                // Remover o prefixo se ele existir
                 if (base64Image.startsWith("data:image/png;base64,")) {
                     base64Image = base64Image.substring("data:image/png;base64,".length());
                 }
@@ -76,18 +77,18 @@ public class QRCodeAdapter extends ArrayAdapter<QRCodeDisplayItem> {
                     Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
                     eventImageView.setImageBitmap(decodedByte);
                 } catch (IllegalArgumentException e) {
-                    // Log do erro se a string Base64 for inválida
                     e.printStackTrace();
-                    eventImageView.setImageResource(android.R.drawable.ic_menu_gallery); // Fallback para um ícone padrão
+                    eventImageView.setImageResource(android.R.drawable.ic_menu_gallery);
                 }
             } else {
-                eventImageView.setImageResource(android.R.drawable.ic_menu_gallery); // Fallback para um ícone padrão
+                eventImageView.setImageResource(android.R.drawable.ic_menu_gallery);
             }
         } else {
             eventNameTextView.setText("Evento desconhecido");
             eventDateTextView.setText("Data desconhecida");
             eventLocationTextView.setText("Local desconhecido");
-            eventImageView.setImageResource(android.R.drawable.ic_menu_gallery); // Fallback para um ícone padrão
+            organizerNameTextView.setText("Organizador: Desconhecido"); // Fallback para o novo TextView
+            eventImageView.setImageResource(android.R.drawable.ic_menu_gallery);
         }
 
         return convertView;

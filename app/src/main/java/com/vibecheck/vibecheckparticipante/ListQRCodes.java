@@ -27,14 +27,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executor;
 
-public class ListQRCodes extends AppCompatActivity {
+public class ListQRCodes extends AppCompatActivity { // Nome da classe com 's'
 
     private ListView qrCodeListView;
     private ApiService apiService;
-    private static final String TAG = "ListQRCode";
+    private static final String TAG = "ListQRCodes"; // TAG com 's'
     private static final String API_BASE_URL = "https://3e46-179-119-53-133.ngrok-free.app/api/qrcode/";
-    // CHAVE CORRIGIDA AQUI
-    private static final String PARTICIPANT_ID_KEY = "id"; // A chave nas SharedPreferences é "id"
+    private static final String PARTICIPANT_ID_KEY = "id";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,11 +71,8 @@ public class ListQRCodes extends AppCompatActivity {
 
     private void loadQRCodes() {
         SharedPreferences sharedPref = getSharedPreferences("user_data", Context.MODE_PRIVATE);
-        // RECUPERANDO COMO LONG E USANDO A CHAVE CORRETA
-        long participantIdLong = sharedPref.getLong(PARTICIPANT_ID_KEY, -1L); // -1L como valor padrão para long
-        int participantId = (int) participantIdLong; // Convertendo para int se o ID for pequeno o suficiente
-
-        Log.d(TAG,Integer.toString(participantId));
+        long participantIdLong = sharedPref.getLong(PARTICIPANT_ID_KEY, -1L);
+        int participantId = (int) participantIdLong;
 
         if (participantId != -1) {
             String url = API_BASE_URL + participantId + "/participant";
@@ -96,14 +92,38 @@ public class ListQRCodes extends AppCompatActivity {
                                 String qrCodeBase64 = qrCodeNode.path("qr_code_base64").asText("");
                                 JsonNode registrationNode = qrCodeNode.path("registration");
                                 JsonNode eventNode = registrationNode.path("event");
-                                JsonNode eventAddressNode = eventNode.path("event_address");
-
 
                                 String eventName = eventNode.path("name").asText("Nome indisponível");
                                 String eventDate = eventNode.path("created_at").asText("Data indisponível");
-                                String eventLocation = eventAddressNode.path("street").asText("Local indisponível");
+                                String eventLocation = ""; // Inicialize como vazio
 
-                                displayItems.add(new QRCodeDisplayItem(eventName, eventDate, eventLocation, qrCodeBase64));
+                                // Extrair o endereço completo do evento (opcional, se quiser detalhar mais o local)
+                                JsonNode eventAddressNode = eventNode.path("event_address");
+                                if (eventAddressNode.isObject()) {
+                                    String street = eventAddressNode.path("street").asText("");
+                                    String number = eventAddressNode.path("number").asText("");
+                                    String neighborhood = eventAddressNode.path("neighborhood").asText("");
+                                    String city = eventAddressNode.path("city").asText("");
+                                    String state = eventAddressNode.path("state").asText("");
+                                    eventLocation = street + ", " + number + " - " + neighborhood + ", " + city + " - " + state;
+                                    if (eventLocation.trim().isEmpty() || eventLocation.equals(",  - ,  - ")) {
+                                        eventLocation = "Local indisponível";
+                                    }
+                                } else {
+                                    eventLocation = eventNode.path("event_address_id").asText("Local indisponível"); // Fallback
+                                }
+
+
+                                // EXTRAIR NOME DO ORGANIZADOR AQUI
+                                String organizerName = "Organizador indisponível";
+                                JsonNode organizerNode = eventNode.path("organizer");
+                                if (organizerNode.isObject()) {
+                                    organizerName = organizerNode.path("full_name").asText("Organizador indisponível");
+                                }
+
+
+                                // Passar o nome do organizador para o construtor do QRCodeDisplayItem
+                                displayItems.add(new QRCodeDisplayItem(eventName, eventDate, eventLocation, organizerName, qrCodeBase64));
                             }
                         }
 
@@ -133,7 +153,7 @@ public class ListQRCodes extends AppCompatActivity {
                 }
             });
         } else {
-            Toast.makeText(this, "ID do participante não encontrado. Por favor, faça login novamente.", Toast.LENGTH_LONG).show();
+            Toast.makeText(ListQRCodes.this, "ID do participante não encontrado. Por favor, faça login novamente.", Toast.LENGTH_LONG).show();
         }
     }
 }
