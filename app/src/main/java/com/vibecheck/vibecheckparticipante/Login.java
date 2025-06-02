@@ -118,33 +118,18 @@ public class Login extends AppCompatActivity {
                     // Faça verificações para garantir que os valores não são nulos antes de salvar,
                     // caso algum campo possa faltar na resposta da API.
 
-                    if (responseMap.containsKey("organizer_type")) {
-                        editor.putInt("organizer_type", (Integer) responseMap.get("organizer_type"));
+                    if (responseMap.containsKey("name")) {
+                        editor.putString("name", (String) responseMap.get("name"));
                     }
-                    if (responseMap.containsKey("company_name")) {
-                        editor.putString("company_name", (String) responseMap.get("company_name"));
-                    }
-                    if (responseMap.containsKey("legal_name")) {
-                        editor.putString("legal_name", (String) responseMap.get("legal_name"));
-                    }
-                    if (responseMap.containsKey("cnpj")) {
-                        editor.putString("cnpj", (String) responseMap.get("cnpj"));
-                    }
-                    if (responseMap.containsKey("full_name")) {
-                        editor.putString("full_name", (String) responseMap.get("full_name"));
-                    }
-                    if (responseMap.containsKey("cpf")) {
-                        editor.putString("cpf", (String) responseMap.get("cpf"));
-                    }
+
                     if (responseMap.containsKey("email")) {
                         editor.putString("email", (String) responseMap.get("email"));
                     }
-                    if (responseMap.containsKey("updated_at")) {
-                        editor.putString("updated_at", (String) responseMap.get("updated_at"));
-                    }
+
                     if (responseMap.containsKey("created_at")) {
                         editor.putString("created_at", (String) responseMap.get("created_at"));
                     }
+
                     if (responseMap.containsKey("id")) {
                         if (responseMap.get("id") instanceof Number) {
                             editor.putLong("id", ((Number) responseMap.get("id")).longValue());

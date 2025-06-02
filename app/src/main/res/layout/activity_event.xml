@@ -7,4 +7,111 @@
     android:layout_height="match_parent"
     tools:context=".Event">
 
+    <ScrollView
+        android:id="@+id/lvRandomEvents"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        android:fillViewport="true"
+        tools:context=".Event">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tv_event_details_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="Detalhes do Evento"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nome do Evento"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/nomeEvento"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/input_shape"
+                android:inputType="textCapSentences"
+                android:maxLines="1"
+                android:text="Carregando..."
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Data do Evento"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/dataEvento"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/input_shape"
+                android:inputType="textCapSentences"
+                android:maxLines="1"
+                android:text="Carregando..."
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Local do Evento"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/localEvento"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/input_shape"
+                android:inputType="textCapSentences"
+                android:maxLines="1"
+                android:text="Carregando..."
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Descrição"
+                android:textColor="@color/black" />
+
+            <EditText
+                android:id="@+id/descricaoEvento"
+                android:layout_width="match_parent"
+                android:layout_height="92dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/input_shape"
+                android:gravity="start|top"
+                android:inputType="textMultiLine"
+                android:maxLines="10"
+                android:text="Carregando..."
+                android:textColor="#ffffff" />
+
+            <Button
+                android:id="@+id/participarButton"
+                android:layout_width="378dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_shape"
+                android:onClick="updateEvent"
+                android:text="Eu quero participar"
+                android:textColor="#ffffff" />
+
+        </LinearLayout>
+    </ScrollView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

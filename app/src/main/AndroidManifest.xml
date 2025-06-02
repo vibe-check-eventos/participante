@@ -21,6 +21,24 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".ListQRCodes"
+            android:exported="false" />
+        <activity
+            android:name=".FullScreenQRCode"
+            android:exported="false" />
+        <activity
+            android:name=".FullscreenImageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".QRCodeData"
+            android:exported="false" />
+        <activity
+            android:name=".ListQRCode"
+            android:exported="false" />
+        <activity
+            android:name=".NewQRCode"
+            android:exported="false" />
+        <activity
             android:name=".Qrcodes"
             android:exported="false" />
         <activity

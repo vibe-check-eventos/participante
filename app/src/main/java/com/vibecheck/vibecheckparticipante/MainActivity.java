@@ -138,6 +138,10 @@ public class MainActivity extends AppCompatActivity {
                         editor.putString("email", (String) responseMap.get("email"));
                     }
 
+                    if (responseMap.containsKey("created_at")) {
+                        editor.putString("created_at", (String) responseMap.get("created_at"));
+                    }
+
                     if (responseMap.containsKey("id")) {
                         if (responseMap.get("id") instanceof Number) {
                             editor.putLong("id", ((Number) responseMap.get("id")).longValue());
