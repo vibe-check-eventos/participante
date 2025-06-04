@@ -51,7 +51,8 @@ public class QRCodeAdapter extends ArrayAdapter<QRCodeDisplayItem> {
             String dateString = qrCodeItem.getEventDate();
             if (dateString != null && !dateString.isEmpty()) {
                 try {
-                    SimpleDateFormat apiFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'", Locale.getDefault());
+                    // Formato de entrada da API alterado para "yyyy-MM-dd HH:mm"
+                    SimpleDateFormat apiFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault());
                     Date date = apiFormat.parse(dateString);
                     SimpleDateFormat displayFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
                     eventDateTextView.setText(displayFormat.format(date));

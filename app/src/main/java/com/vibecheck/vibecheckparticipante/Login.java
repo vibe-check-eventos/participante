@@ -126,8 +126,8 @@ public class Login extends AppCompatActivity {
                         editor.putString("email", (String) responseMap.get("email"));
                     }
 
-                    if (responseMap.containsKey("created_at")) {
-                        editor.putString("created_at", (String) responseMap.get("created_at"));
+                    if (responseMap.containsKey("date")) {
+                        editor.putString("date", (String) responseMap.get("date"));
                     }
 
                     if (responseMap.containsKey("id")) {

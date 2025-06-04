@@ -94,7 +94,7 @@ public class ListQRCodes extends AppCompatActivity { // Nome da classe com 's'
                                 JsonNode eventNode = registrationNode.path("event");
 
                                 String eventName = eventNode.path("name").asText("Nome indisponível");
-                                String eventDate = eventNode.path("created_at").asText("Data indisponível");
+                                String eventDate = eventNode.path("date").asText("Data indisponível");
                                 String eventLocation = ""; // Inicialize como vazio
 
                                 // Extrair o endereço completo do evento (opcional, se quiser detalhar mais o local)
